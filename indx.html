@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARAMAYA Transport - Burkina Faso</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #ee0c0c;
+            --secondary-red: #ed0e0e;
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--secondary-red);
+        }
+        
+        .containers {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            color: var(--primary-red);
+            font-size: 2.5rem;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+        }
+        
+        .logo span {
+            color: var(--dark-gray);
+            font-weight: 400;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary-red);
+        }
+        
+        nav a.active {
+            color: var(--primary-red);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-red);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-red);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-red);
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #110a0a;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(8, 3, 3, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .reservation-img {
+            background-image: url('https://images.unsplash.com/photo-1570125909232-eb263c188f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+        }
+        
+        .colis-img {
+            background-image: url('https://images.unsplash.com/photo-1560089000-7433a4ebbd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+        }
+        
+        .info-img {
+            background-image: url('https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80');
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: #060404;
+        }
+        
+        /* Forms */
+        .form-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .form-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .form-container {
+            background-color: var(--white);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .close-form {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-gray);
+            cursor: pointer;
+        }
+        
+        .form-title {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .form-title h3 {
+            font-size: 2rem;
+            color: var(--primary-red);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid hsl(0, 0%, 87%);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-red);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .tarif-display {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-red);
+            margin: 20px 0;
+        }
+        
+        /* Trajets Table */
+        .trajets-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .trajets-table th {
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .trajets-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .trajets-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .trajets-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+        
+        .footer-col p, .footer-col a {
+            color: #fcf9f9;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .footer-col a {
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col a:hover {
+            color: var(--primary-red);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: --white(230, 8, 8, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-red);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #f9f6f6;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav li {
+                margin: 0 0 15px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bus"></i>
+                </div>
+                <h1>SARAMAYA <span>Transport</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#accueil" class="active">Accueil</a></li>
+                    <li><a href="#reservation">Réservation</a></li>
+                    <li><a href="#colis">Colis & Courrier</a></li>
+                    <li><a href="#informations">Informations</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h2>SARAMAYA Transport</h2>
+            <p>Votre partenaire de confiance pour le transport de personnes et des marchandises à travers le Burkina Faso</p>
+            <a href="#reservation" class="btn">Réserver maintenant</a>
+        </div>
+    </section>
+
+    <!-- Réservation Section -->
+    <section id="reservation">
+        <div class="containers">
+            <div class="section-title">
+                <h2>Réservation de billets</h2>
+                <p>Découvrez tous nos trajets et tarifs. Réservez votre place en un clics.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class
+                    ="service-img reservation-img"></div>
+                    <div class="service-content">
+                        <h3>Réservation de billet en ligne</h3>
+                        <p>Réservez votre billet maintenant.</p>
+                        <button class="btn open-reservation-form">Réserver</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tableau des trajets -->
+            <h3 style="margin-top: 50px; margin-bottom: 20px;">Nos trajets et tarifs</h3>
+            <table class="trajets-table">
+                <thead>
+                    <tr>
+                        <th>Trajet</th>
+                        <th>Distance</th>
+                        <th>Durée</th>
+                        <th>Tarif (FCFA)</th>
+                    </tr>
+                </thead>
+                <tbody id="trajetsTable">
+                    <!-- Les trajets seront ajoutés dynamiquement -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Colis & Courrier Section -->
+    <section id="colis">
+        <div class="container">
+            <div class="section-title">
+                <h2>Colis & Courrier</h2>
+                <p>Expédiez vos colis et courriers en toute sécurité avec SARAMAYA Transport.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img colis-img"></div>
+                    <div class="service-content">
+                        <h3>Envoi de colis ou couriers</h3>
+                        <p>Envoyez vos colis partout au Burkina Faso avec notre service rapide et sécurisé.</p>
+                        <button class="btn open-colis-form">Enregistrer et Envoyer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informations Section -->
+    <section id="informations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Informations</h2>
+                <p>Contactez-nous pour toute information complémentaire.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img info-img"></div>
+                    <div class="service-content">
+                        <h3>Contact & Informations</h3>
+                        <p>Besoin d'informations supplémentaires? Contactez-nous via notre formulaire ou par téléphone au 77 03 09 41.</p>
+                        <button class="btn open-info-form">Formulaire de contact</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulaire de réservation -->
+    <div class="form-overlay" id="reservationForm">
+        <div class="form-container">
+            <button class="close-form" id="closeReservationForm">&times;</button>
+            <div class="form-title">
+                <h3>Réservation de billet</h3>
+            </div>
+            <form id="ticketForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nom">Nom complet *</label>
+                        <input type="text" id="nom" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone *</label>
+                        <input type="tel" id="telephone" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trajet">Trajet *</label>
+                    <select id="trajet" class="form-control" required>
+                        <option value="">Sélectionnez un trajet</option>
+                        <!-- Les options seront ajoutées dynamiquement -->
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date de voyage *</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="heure">Heure de départ</label>
+                        <select id="heure" class="form-control">
+                            <option value="06:00">06:00</option>
+                            <option value="08:00">08:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="places">Nombre de places *</label>
+                    <input type="number" id="places" class="form-control" min="1" max="10" value="1" required>
+                </div>
+                
+                <div class="tarif-display">
+                    Tarif total: <span id="tarifTotal">0</span> FCFA
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Envoyer la réservation via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Formulaire de colis -->
+    <div class="form-overlay" id="colisForm">
+        <div class="form-container">
+            <button class="close-form" id="closeColisForm">&times;</button>
+            <div class="form-title">
+                <h3>Envoi de colis</h3>
+            </div>
+            <form id="colisFormElement">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expediteur">Nom de l'expéditeur *</label>
+                        <input type="text" id="expediteur" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telExpediteur">Téléphone expéditeur *</label>
+                        <input type="tel" id="telExpediteur" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="destinataire">Nom du destinataire *</label>
+                        <input type="text" id="destinataire" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telDestinataire">Téléphone destinataire</label>
+                        <input type="tel" id="telDestinataire" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="villeDepart">Ville de départ *</label>
+                    <input type="text" id="villeDepart" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="villeArrivee">Ville d'arrivée *</label>
+                    <input type="text" id="villeArrivee" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="descriptionColis">Description du colis *</label>
+                    <textarea id="descriptionColis" class="form-control" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="poids">Poids (kg)</label>
+                        <input type="number" id="poids" class="form-control" min="0.1" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensions">Dimensions (m2 ou L et l)</label>
+                        <input type="text" id="dimensions" class="form-control" placeholder="ex: 30x20x15">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Envoyer la demande via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Formulaire d'informations -->
+    <div class="form-overlay" id="infoForm">
+        <div class="form-container">
+            <button class="close-form" id="closeInfoForm">&times;</button>
+            <div class="form-title">
+                <h3>Formulaire de contact</h3>
+            </div>
+            <form id="infoFormElement">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="infoNom">Nom complet *</label>
+                        <input type="text" id="infoNom" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="infoTelephone">Téléphone *</label>
+                        <input type="tel" id="infoTelephone" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="infoEmail">Email</label>
+                    <input type="email" id="infoEmail" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="infoSujet">Sujet *</label>
+                    <select id="infoSujet" class="form-control" required>
+                        <option value="">Sélectionnez un sujet</option>
+                        <option value="information">Demande d'information</option>
+                        <option value="reclamation">Réclamation</option>
+                        <option value="suggestion">Suggestion</option>
+                        <option value="partenariat">Partenariat</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="infoMessage">Message *</label>
+                    <textarea id="infoMessage" class="form-control" rows="5" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Envoyer le message via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>SARAMAYA Transport</h3>
+                    <p>Votre partenaire de confiance pour le transport des personnes et des marchandises à travers le Burkina Faso.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/2277030941" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-phone"></i> +226 77 03 09 41</p>
+                    <p><i class="fas fa-envelope"></i> contact@saramaya-transport.bf</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ouagadougou, Burkina Faso</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <a href="#accueil">Accueil</a>
+                    <a href="#reservation">Réservation</a>
+                    <a href="#colis">Colis & Courrier</a>
+                    <a href="#informations">Informations</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2018 SARAMAYA Transport,la meilleur des compagnies.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Données des trajets
+        const trajets = [
+            { id: 1, trajet: "Ouagadougou - Bobo-Dioulasso", distance: "350 km", duree: "5h30", tarif: 6500 },
+            { id: 2, trajet: "Ouagadougou - Koudougou", distance: "100 km", duree: "2h00", tarif: 1700 },
+            { id: 3, trajet: "Ouagadougou - Ouahigouya", distance: "180 km", duree: "3h", tarif: 2500 },
+            { id: 4, trajet: "Ouagadougou - Fada N'Gourma", distance: "220 km", duree: "3h30", tarif: 3000 },
+            { id: 5, trajet: "Bobo-Dioulasso - Banfora", distance: "85 km", duree: "1h45", tarif: 1500 },
+            { id: 6, trajet: "Ouagadougou - Kaya", distance: "100 km", duree: "2h00", tarif: 1700 },
+            { id: 7, trajet: "Ouagadougou - Dédougou", distance: "240 km", duree: "4h15", tarif: 3500 },
+            { id: 8, trajet: "Bobo-Dioulasso - Dédougou", distance: "120 km", duree: "2h15", tarif: 1800 }
+        ];
+        
+        // Numéro WhatsApp de la compagnie
+        const whatsappNumber = "+2277030941";
+        
+        // Initialisation du site
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remplir le tableau des trajets
+            const trajetsTable = document.getElementById('trajetsTable');
+            const trajetSelect = document.getElementById('trajet');
+            
+            trajets.forEach(trajet => {
+                // Ajouter au tableau
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${trajet.trajet}</td>
+                    <td>${trajet.distance}</td>
+                    <td>${trajet.duree}</td>
+                    <td>${trajet.tarif} FCFA</td>
+                `;
+                trajetsTable.appendChild(row);
+                
+                // Ajouter au select
+                const option = document.createElement('option');
+                option.value = trajet.id;
+                option.textContent = `${trajet.trajet} - ${trajet.tarif} FCFA`;
+                trajetSelect.appendChild(option);
+            });
+            
+            // Menu mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Fermer le menu mobile au clic sur un lien
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                });
+            });
+            
+            // Navigation fluide
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    // Mettre à jour la classe active
+                    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Faire défiler vers la section
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Gestion des formulaires
+            const reservationForm = document.getElementById('reservationForm');
+            const colisForm = document.getElementById('colisForm');
+            const infoForm = document.getElementById('infoForm');
+            
+            // Ouvrir formulaire de réservation
+            document.querySelector('.open-reservation-form').addEventListener('click', function() {
+                reservationForm.classList.add('active');
+            });
+            
+            // Ouvrir formulaire de colis
+            document.querySelector('.open-colis-form').addEventListener('click', function() {
+                colisForm.classList.add('active');
+            });
+            
+            // Ouvrir formulaire d'informations
+            document.querySelector('.open-info-form').addEventListener('click', function() {
+                infoForm.classList.add('active');
+            });
+            
+            // Fermer les formulaires
+            document.getElementById('closeReservationForm').addEventListener('click', function() {
+                reservationForm.classList.remove('active');
+            });
+            
+            document.getElementById('closeColisForm').addEventListener('click', function() {
+                colisForm.classList.remove('active');
+            });
+            
+            document.getElementById('closeInfoForm').addEventListener('click', function() {
+                infoForm.classList.remove('active');
+            });
+            
+            // Fermer les formulaires en cliquant à l'extérieur
+            [reservationForm, colisForm, infoForm].forEach(form => {
+                form.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Calcul du tarif pour la réservation
+            const trajetSelectElement = document.getElementById('trajet');
+            const placesInput = document.getElementById('places');
+            const tarifTotal = document.getElementById('tarifTotal');
+            
+            function calculerTarifTotal() {
+                const trajetId = parseInt(trajetSelectElement.value);
+                const places = parseInt(placesInput.value) || 1;
+                
+                if (trajetId) {
+                    const trajet = trajets.find(t => t.id === trajetId);
+                    const total = trajet.tarif * places;
+                    tarifTotal.textContent = total;
+                } else {
+                    tarifTotal.textContent = 0;
+                }
+            }
+            
+            trajetSelectElement.addEventListener('change', calculerTarifTotal);
+            placesInput.addEventListener('input', calculerTarifTotal);
+            
+            // Soumission du formulaire de réservation
+            document.getElementById('ticketForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const trajetId = parseInt(trajetSelectElement.value);
+                const trajet = trajets.find(t => t.id === trajetId);
+                const places = parseInt(placesInput.value) || 1;
+                const total = trajet.tarif * places;
+                
+                // Construire le message pour WhatsApp
+                const message = `Bonjour SARAMAYA Transport,\n\nJe souhaite réserver un billet:\n\n` +
+                               `Nom: ${document.getElementById('nom').value}\n` +
+                               `Téléphone: ${document.getElementById('telephone').value}\n` +
+                               `Trajet: ${trajet.trajet}\n` +
+                               `Date: ${document.getElementById('date').value}\n` +
+                               `Heure: ${document.getElementById('heure').value}\n` +
+                               `Nombre de places: ${places}\n` +
+                               `Tarif total: ${total} FCFA\n\n` +
+                               `Merci de me confirmer cette réservation.`;
+                
+                // Encoder le message pour l'URL
+                const encodedMessage = encodeURIComponent(message);
+                
+                // Ouvrir WhatsApp avec le message
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                
+                // Réinitialiser le formulaire
+                this.reset();
+                tarifTotal.textContent = 0;
+                
+                // Fermer le formulaire
+                reservationForm.classList.remove('active');
+                
+                // Afficher un message de confirmation
+                alert('Votre réservation a été envoyée à SARAMAYA Transport via WhatsApp. Vous allez être redirigé vers WhatsApp pour confirmer.');
+            });
+            
+            // Soumission du formulaire de colis
+            document.getElementById('colisFormElement').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Construire le message pour WhatsApp
+                const message = `Bonjour SARAMAYA Transport,\n\nJe souhaite envoyer un colis:\n\n` +
+                               `Expéditeur: ${document.getElementById('expediteur').value}\n` +
+                               `Téléphone expéditeur: ${document.getElementById('telExpediteur').value}\n` +
+                               `Destinataire: ${document.getElementById('destinataire').value}\n` +
+                               `Téléphone destinataire: ${document.getElementById('telDestinataire').value}\n` +
+                               `Ville de départ: ${document.getElementById('villeDepart').value}\n` +
+                               `Ville d'arrivée: ${document.getElementById('villeArrivee').value}\n` +
+                               `Description du colis: ${document.getElementById('descriptionColis').value}\n` +
+                               `Poids: ${document.getElementById('poids').value || 'Non spécifié'} kg\n` +
+                               `Dimensions: ${document.getElementById('dimensions').value || 'Non spécifiées'}\n\n` +
+                               `Merci de me contacter pour les tarifs et modalités d'envoi.`;
+                
+                // Encoder le message pour l'URL
+                const encodedMessage = encodeURIComponent(message);
+                
+                // Ouvrir WhatsApp avec le message
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                
+                // Réinitialiser le formulaire
+                this.reset();
+                
+                // Fermer le formulaire
+                colisForm.classList.remove('active');
+                
+                // Afficher un message de confirmation
+                alert('Votre demande d\'envoi de colis a été envoyée à SARAMAYA Transport via WhatsApp. Vous allez être redirigé vers WhatsApp pour confirmer.');
+            });
+            
+            // Soumission du formulaire d'informations
+            document.getElementById('infoFormElement').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Construire le message pour WhatsApp
+                const message = `Bonjour SARAMAYA Transport,\n\nNouveau message de contact:\n\n` +
+                               `Nom: ${document.getElementById('infoNom').value}\n` +
+                               `Téléphone: ${document.getElementById('infoTelephone').value}\n` +
+                               `Email: ${document.getElementById('infoEmail').value || 'Non fourni'}\n` +
+                               `Sujet: ${document.getElementById('infoSujet').value}\n` +
+                               `Message: ${document.getElementById('infoMessage').value}\n\n` +
+                               `Merci de me contacter pour plus d'informations.`;
+                
+                // Encoder le message pour l'URL
+                const encodedMessage = encodeURIComponent(message);
+                
+                // Ouvrir WhatsApp avec le message
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                
+                // Réinitialiser le formulaire
+                this.reset();
+                
+                // Fermer le formulaire
+                infoForm.classList.remove('active');
+                
+                // Afficher un message de confirmation
+                alert('Votre message a été envoyé à SARAMAYA Transport via WhatsApp. Vous allez être redirigé vers WhatsApp pour confirmer.');
+            });
+            
+            // Définir la date minimale pour la réservation (aujourd'hui)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('date').min = today;
+            
+            // Mettre à jour la classe active dans la navigation lors du défilement
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('nav a');
+                
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (scrollY >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
